@@ -4,8 +4,8 @@
   Include file for Video class
 */
 
-#ifndef MOVIE_H
-#define MOVIE_H
+#ifndef VIDEO_H
+#define VIDEO_H
 
 #include <string>
 
