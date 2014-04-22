@@ -1,30 +1,30 @@
 /*
-  Movie.cpp
+  Video.cpp
 
-  Definition file for Movie class
+  Definition file for Video class
 */
 
-#include "Movie.hpp"
+#include "Video.hpp"
 
 // constructor
-Movie::Movie(const std::string& title, int price_code)
+Video::Video(const std::string& title, int price_code)
     : title(title), price_code(price_code)
 { }
 
 // movie title
-const std::string& Movie::getTitle() const {
+const std::string& Video::getTitle() const {
 
     return title;
 }
 
 // movie price code
-int Movie::getPriceCode() const {
+int Video::getPriceCode() const {
 
     return price_code;
 }
 
 // set movie price code
-void Movie::setPriceCode(int new_price_code) {
+void Video::setPriceCode(int new_price_code) {
 
     price_code = new_price_code;
 }

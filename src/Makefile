@@ -2,9 +2,9 @@
 # VideoStore
 #
 
-OBJS=VideoStore.o Movie.o Rental.o Customer.o
-TOBJS=Movie_t.o Rental_t.o Customer_t.o
-EXE=VideoStore Movie_t Rental_t Customer_t
+OBJS=VideoStore.o Video.o Rental.o Customer.o
+TOBJS=Video_t.o Rental_t.o Customer_t.o
+EXE=VideoStore Video_t Rental_t Customer_t
 
 GCC= g++
 CFLAGS=-Wall
@@ -20,34 +20,34 @@ run : VideoStore
 VideoStore : $(OBJS)
 	$(GCC) $^ -o $@
 
-VideoStore.o: VideoStore.cpp Movie.hpp Rental.hpp Customer.hpp
+VideoStore.o: VideoStore.cpp Video.hpp Rental.hpp Customer.hpp
 	$(GCC) $(CFLAGS) -c $<
 
-# Movie
-Movie.o: Movie.cpp Movie.hpp
+# Video
+Video.o: Video.cpp Video.hpp
 	$(GCC) $(CFLAGS) -c $<
 
-Movie_t : Movie_t.o Movie.o
+Video_t : Video_t.o Video.o
 	$(GCC) $^ -o $@
 
-Movie_t.o: Movie_t.cpp Movie.hpp
+Video_t.o: Video_t.cpp Video.hpp
 	$(GCC) $(CFLAGS) -c $<
 
 # Rental
-Rental.o: Rental.cpp Rental.hpp Movie.hpp
+Rental.o: Rental.cpp Rental.hpp Video.hpp
 	$(GCC) $(CFLAGS) -c $<
 
-Rental_t : Rental_t.o Rental.o Movie.o
+Rental_t : Rental_t.o Rental.o Video.o
 	$(GCC) $^ -o $@
 
 Rental_t.o: Rental_t.cpp Rental.hpp
 	$(GCC) $(CFLAGS) -c $<
 
 # Customer
-Customer.o: Customer.cpp Customer.hpp Movie.hpp Rental.hpp
+Customer.o: Customer.cpp Customer.hpp Video.hpp Rental.hpp
 	$(GCC) $(CFLAGS) -c $<
 
-Customer_t : Customer_t.o Customer.o Rental.o Movie.o
+Customer_t : Customer_t.o Customer.o Rental.o Video.o
 	$(GCC) $^ -o $@
 
 Customer_t.o: Customer_t.cpp Customer.hpp
@@ -64,7 +64,7 @@ cleanobjects :
 
 # unit testing
 .PHONY : test
-test : Movie_t Rental_t Customer_t
-	@./Movie_t
+test : Video_t Rental_t Customer_t
+	@./Video_t
 	@./Rental_t
 	@./Customer_t

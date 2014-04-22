@@ -1,56 +1,56 @@
 /*
-  Movie_t.cpp
+  Video_t.cpp
 
-  Test program for class Movie
+  Test program for class Video
 */
 
 #include <cassert>
 
-#include "Movie.hpp"
+#include "Video.hpp"
 
 int main() {
 
   // regular movie
   {
-    Movie movie("A", Movie::REGULAR);
+    Video movie("A", Video::REGULAR);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Movie::REGULAR);
+    assert(movie.getPriceCode() == Video::REGULAR);
   }
 
   // new release
   {
-    Movie movie("A", Movie::NEW_RELEASE);
+    Video movie("A", Video::NEW_RELEASE);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Movie::NEW_RELEASE);
+    assert(movie.getPriceCode() == Video::NEW_RELEASE);
   }
 
   // childrens
   {
-    Movie movie("A", Movie::CHILDRENS);
+    Video movie("A", Video::CHILDRENS);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Movie::CHILDRENS);
+    assert(movie.getPriceCode() == Video::CHILDRENS);
   }
 
   // longer title
   {
-    Movie movie("A B", Movie::REGULAR);
+    Video movie("A B", Video::REGULAR);
 
     assert(movie.getTitle() == "A B");
-    assert(movie.getPriceCode() == Movie::REGULAR);
+    assert(movie.getPriceCode() == Video::REGULAR);
   }
 
   // change price
   {
-    Movie movie("A", Movie::NEW_RELEASE);
+    Video movie("A", Video::NEW_RELEASE);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Movie::NEW_RELEASE);
+    assert(movie.getPriceCode() == Video::NEW_RELEASE);
 
-    movie.setPriceCode(Movie::REGULAR);
-    assert(movie.getPriceCode() == Movie::REGULAR);
+    movie.setPriceCode(Video::REGULAR);
+    assert(movie.getPriceCode() == Video::REGULAR);
   }
 
   return 0;

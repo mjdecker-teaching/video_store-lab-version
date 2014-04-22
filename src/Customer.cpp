@@ -5,7 +5,7 @@
 */
 
 #include "Customer.hpp"
-#include "Movie.hpp"
+#include "Video.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -46,13 +46,13 @@ std::string Customer::statement() const {
         ++frequentRenterPoints;
 
         // new releases rented for more then one day gives a bonus rental point
-        if (it->getMovie().getPriceCode() == Movie::NEW_RELEASE &&
+        if (it->getVideo().getPriceCode() == Video::NEW_RELEASE &&
             it->getDaysRented() > 1 )
             ++frequentRenterPoints;
 
         // title of rental
         result += "\t";
-        result += it->getMovie().getTitle();
+        result += it->getVideo().getTitle();
         result += "\t";
 
         // amount of rental

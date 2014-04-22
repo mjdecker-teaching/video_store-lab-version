@@ -6,15 +6,15 @@
 
 #include <iostream>
 
-#include "Movie.hpp"
+#include "Video.hpp"
 #include "Rental.hpp"
 #include "Customer.hpp"
 
 int main() {
 
-    // Movies
-    Movie lotr("Lord of the Rings", Movie::REGULAR);
-    Movie hp("Harry Potter", Movie::CHILDRENS);
+    // Videos
+    Video lotr("Lord of the Rings", Video::REGULAR);
+    Video hp("Harry Potter", Video::CHILDRENS);
 
     // Rentals of these movies
     Rental r1(lotr, 10);

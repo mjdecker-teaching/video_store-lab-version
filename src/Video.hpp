@@ -1,7 +1,7 @@
 /*
-  Movie.hpp
+  Video.hpp
 
-  Include file for Movie class
+  Include file for Video class
 */
 
 #ifndef MOVIE_H
@@ -9,7 +9,7 @@
 
 #include <string>
 
-class Movie {
+class Video {
 public:
 
     static const int REGULAR      = 0;
@@ -17,7 +17,7 @@ public:
     static const int CHILDRENS    = 2;
 
     // constructor
-    Movie(const std::string& title, int price_code);
+    Video(const std::string& title, int price_code);
 
     // movie title
     const std::string& getTitle() const;

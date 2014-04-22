@@ -7,7 +7,7 @@
 #include "Rental.hpp"
 
 // constructor
-Rental::Rental(const Movie& movie, int days_rented)
+Rental::Rental(const Video& movie, int days_rented)
     : movie(movie), days(days_rented)
 { }
 
@@ -18,7 +18,7 @@ int Rental::getDaysRented() const {
 }
 
 // movie rented
-const Movie& Rental::getMovie() const {
+const Video& Rental::getVideo() const {
 
     return movie;
 }
@@ -26,19 +26,19 @@ const Movie& Rental::getMovie() const {
 double Rental::getCharge() const {
 
     double thisAmount = 0;
-    switch(getMovie().getPriceCode()) {
+    switch(getVideo().getPriceCode()) {
 
-    case Movie::REGULAR:
+    case Video::REGULAR:
         thisAmount += 2;
         if (getDaysRented() > 2)
             thisAmount += (getDaysRented() - 2) * 1.5;
         break;
 
-    case Movie::NEW_RELEASE:
+    case Video::NEW_RELEASE:
         thisAmount += getDaysRented() * 3;
         break;
 
-    case Movie::CHILDRENS:
+    case Video::CHILDRENS:
         thisAmount += 1.5;
         if (getDaysRented() > 3)
             thisAmount += (getDaysRented() - 3) * 1.5;
