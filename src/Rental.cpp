@@ -26,7 +26,7 @@ const Video& Rental::getVideo() const {
 double Rental::getCharge() const {
 
     double thisAmount = 0;
-    switch(getVideo().getPriceCode()) {
+    switch(getVideo().getCode()) {
 
     case Video::REGULAR:
         thisAmount += 2;
