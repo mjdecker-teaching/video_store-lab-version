@@ -15,7 +15,7 @@ int main() {
     Video movie("A", Video::REGULAR);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Video::REGULAR);
+    assert(movie.getCode() == Video::REGULAR);
   }
 
   // new release
@@ -23,7 +23,7 @@ int main() {
     Video movie("A", Video::NEW_RELEASE);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Video::NEW_RELEASE);
+    assert(movie.getCode() == Video::NEW_RELEASE);
   }
 
   // childrens
@@ -31,7 +31,7 @@ int main() {
     Video movie("A", Video::CHILDRENS);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Video::CHILDRENS);
+    assert(movie.getCode() == Video::CHILDRENS);
   }
 
   // longer title
@@ -39,7 +39,7 @@ int main() {
     Video movie("A B", Video::REGULAR);
 
     assert(movie.getTitle() == "A B");
-    assert(movie.getPriceCode() == Video::REGULAR);
+    assert(movie.getCode() == Video::REGULAR);
   }
 
   // change price
@@ -47,10 +47,10 @@ int main() {
     Video movie("A", Video::NEW_RELEASE);
 
     assert(movie.getTitle() == "A");
-    assert(movie.getPriceCode() == Video::NEW_RELEASE);
+    assert(movie.getCode() == Video::NEW_RELEASE);
 
     movie.setPriceCode(Video::REGULAR);
-    assert(movie.getPriceCode() == Video::REGULAR);
+    assert(movie.getCode() == Video::REGULAR);
   }
 
   return 0;
