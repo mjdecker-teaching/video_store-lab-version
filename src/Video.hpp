@@ -25,9 +25,6 @@ public:
     // movie price code
     int getCode() const;
 
-    // movie price code
-    int getPriceCode() const;
-
     // set movie price code
     void setPriceCode(int new_price_code);
 
