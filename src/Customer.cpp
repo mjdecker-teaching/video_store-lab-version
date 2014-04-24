@@ -46,7 +46,7 @@ std::string Customer::statement() const {
         ++frequentRenterPoints;
 
         // new releases rented for more then one day gives a bonus rental point
-        if (it->getVideo().getPriceCode() == Video::NEW_RELEASE &&
+        if (it->getVideo().getCode() == Video::NEW_RELEASE &&
             it->getDaysRented() > 1 )
             ++frequentRenterPoints;
 
