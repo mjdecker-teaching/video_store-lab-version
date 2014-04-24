@@ -20,7 +20,7 @@ const std::string& Video::getTitle() const {
 // movie price code
 int Video::getCode() const {
 
-	return getPriceCode();
+    return price_code;
 }
 
 // movie price code
