@@ -23,6 +23,9 @@ public:
     const std::string& getTitle() const;
 
     // movie price code
+    int getCode() const;
+
+    // movie price code
     int getPriceCode() const;
 
     // set movie price code
