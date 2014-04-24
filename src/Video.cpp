@@ -18,6 +18,12 @@ const std::string& Video::getTitle() const {
 }
 
 // movie price code
+int Video::getCode() const {
+
+	return getPriceCode();
+}
+
+// movie price code
 int Video::getPriceCode() const {
 
     return price_code;
