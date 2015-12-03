@@ -21,9 +21,11 @@ all: $(DIRS) $(EXE) test
 run: $(DIRS) $(BIN_DIR)/VideoStore
 	@$(BIN_DIR)/VideoStore
 
+# bin dir
 $(BIN_DIR):
 	mkdir $@
 
+# bin dir
 $(OBJ_DIR):
 	mkdir $@
 
