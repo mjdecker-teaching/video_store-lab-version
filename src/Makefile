@@ -2,11 +2,14 @@
 # VideoStore
 #
 
-OBJS=VideoStore.o Movie.o Rental.o Customer.o
-TOBJS=Movie_t.o Rental_t.o Customer_t.o
-EXE=VideoStore Movie_t Rental_t Customer_t
+OBJ_DIR = ../obj
+BIN_DIR = ../bin
 
-GCC= g++
+OBJS=$(OBJ_DIR)/VideoStore.o $(OBJ_DIR)/Movie.o $(OBJ_DIR)/Rental.o $(OBJ_DIR)/Customer.o
+TOBJS=$(OBJ_DIR)/Movie_t.o $(OBJ_DIR)/Rental_t.o $(OBJ_DIR)/Customer_t.o
+EXE=$(BIN_DIR)/VideoStore $(BIN_DIR)/Movie_t $(BIN_DIR)/Rental_t $(BIN_DIR)/Customer_t
+
+CC= clang++
 CFLAGS=-Wall
 
 .PHONY : all
@@ -17,41 +20,41 @@ all : $(EXE) test
 run : VideoStore
 	@./VideoStore
 
-VideoStore : $(OBJS)
-	$(GCC) $^ -o $@
+$(BIN_DIR)/VideoStore : $(OBJS)
+	$(CC) $^ -o $@
 
-VideoStore.o: VideoStore.cpp Movie.hpp Rental.hpp Customer.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/VideoStore.o: VideoStore.cpp Movie.hpp Rental.hpp Customer.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Movie
-Movie.o: Movie.cpp Movie.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/Movie.o: Movie.cpp Movie.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-Movie_t : Movie_t.o Movie.o
-	$(GCC) $^ -o $@
+$(BIN_DIR)/Movie_t: $(OBJ_DIR)/Movie_t.o $(OBJ_DIR)/Movie.o
+	$(CC) $^ -o $@
 
-Movie_t.o: Movie_t.cpp Movie.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/Movie_t.o: Movie_t.cpp Movie.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Rental
-Rental.o: Rental.cpp Rental.hpp Movie.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/Rental.o: Rental.cpp Rental.hpp Movie.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-Rental_t : Rental_t.o Rental.o Movie.o
-	$(GCC) $^ -o $@
+$(BIN_DIR)/Rental_t: $(OBJ_DIR)/Rental_t.o $(OBJ_DIR)/Rental.o $(OBJ_DIR)/Movie.o
+	$(CC) $^ -o $@
 
-Rental_t.o: Rental_t.cpp Rental.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/Rental_t.o: Rental_t.cpp Rental.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Customer
-Customer.o: Customer.cpp Customer.hpp Movie.hpp Rental.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/Customer.o: Customer.cpp Customer.hpp Movie.hpp Rental.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-Customer_t : Customer_t.o Customer.o Rental.o Movie.o
-	$(GCC) $^ -o $@
+$(BIN_DIR)/Customer_t: $(OBJ_DIR)/Customer_t.o $(OBJ_DIR)/Customer.o $(OBJ_DIR)/Rental.o $(OBJ_DIR)/Movie.o
+	$(CC) $^ -o $@
 
-Customer_t.o: Customer_t.cpp Customer.hpp
-	$(GCC) $(CFLAGS) -c $<
+$(OBJ_DIR)/Customer_t.o: Customer_t.cpp Customer.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # clean
 .PHONY : clean
@@ -64,7 +67,7 @@ cleanobjects :
 
 # unit testing
 .PHONY : test
-test : Movie_t Rental_t Customer_t
-	@./Movie_t
-	@./Rental_t
-	@./Customer_t
+test : $(BIN_DIR)/Movie_t $(BIN_DIR)/Rental_t $(BIN_DIR)/Customer_t
+	@$(BIN_DIR)/Movie_t
+	@$(BIN_DIR)/Rental_t
+	@$(BIN_DIR)/Customer_t
