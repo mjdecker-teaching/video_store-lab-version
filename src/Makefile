@@ -5,6 +5,7 @@
 OBJ_DIR = ../obj
 BIN_DIR = ../bin
 
+DIRS=$(OBJ_DIR) $(BIN_DIR)
 OBJS=$(OBJ_DIR)/VideoStore.o $(OBJ_DIR)/Movie.o $(OBJ_DIR)/Rental.o $(OBJ_DIR)/Customer.o
 TOBJS=$(OBJ_DIR)/Movie_t.o $(OBJ_DIR)/Rental_t.o $(OBJ_DIR)/Customer_t.o
 EXE=$(BIN_DIR)/VideoStore $(BIN_DIR)/Movie_t $(BIN_DIR)/Rental_t $(BIN_DIR)/Customer_t
@@ -12,15 +13,21 @@ EXE=$(BIN_DIR)/VideoStore $(BIN_DIR)/Movie_t $(BIN_DIR)/Rental_t $(BIN_DIR)/Cust
 CC= clang++
 CFLAGS=-Wall
 
-.PHONY : all
-all : $(EXE) test
+.PHONY: all
+all: $(DIRS) $(EXE) test
 
 # VideoStore
-.PHONY : run
-run : VideoStore
-	@./VideoStore
+.PHONY: run
+run: $(DIRS) $(BIN_DIR)/VideoStore
+	@$(BIN_DIR)/VideoStore
 
-$(BIN_DIR)/VideoStore : $(OBJS)
+$(BIN_DIR):
+	mkdir $@
+
+$(OBJ_DIR):
+	mkdir $@
+
+$(BIN_DIR)/VideoStore: $(OBJS)
 	$(CC) $^ -o $@
 
 $(OBJ_DIR)/VideoStore.o: VideoStore.cpp Movie.hpp Rental.hpp Customer.hpp
@@ -57,17 +64,17 @@ $(OBJ_DIR)/Customer_t.o: Customer_t.cpp Customer.hpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # clean
-.PHONY : clean
-clean : cleanobjects
+.PHONY: clean
+clean: cleanobjects
 	rm -f $(EXE)
 
-.PHONY : cleanobjects
-cleanobjects :
-	rm -f $(OBJS) $(TOBJS)
+.PHONY: cleanobjects
+cleanobjects:
+	rm -rf $(DIRS) $(OBJS) $(TOBJS)
 
 # unit testing
-.PHONY : test
-test : $(BIN_DIR)/Movie_t $(BIN_DIR)/Rental_t $(BIN_DIR)/Customer_t
+.PHONY: test
+test: $(DIRS) $(BIN_DIR)/Movie_t $(BIN_DIR)/Rental_t $(BIN_DIR)/Customer_t
 	@$(BIN_DIR)/Movie_t
 	@$(BIN_DIR)/Rental_t
 	@$(BIN_DIR)/Customer_t
