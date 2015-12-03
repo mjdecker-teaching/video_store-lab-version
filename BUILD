@@ -1,5 +1,7 @@
 ## BUILD
 
+* All commands must be run in src directory
+
 * Type *make* to build.
 
 	make
