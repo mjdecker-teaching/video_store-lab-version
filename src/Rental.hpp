@@ -10,8 +10,12 @@
 #include "Movie.hpp"
 
 class Rental {
-public:
 
+private:
+    Movie movie;
+    int days;
+
+public:
     // constructor
     Rental(const Movie& movie, int days_rented);
 
@@ -21,12 +25,7 @@ public:
     // movie rented
     const Movie& getMovie() const;
 
-    // charge for the movie
-    double getCharge() const;
 
-private:
-    Movie movie;
-    int days;
 };
 
 #endif

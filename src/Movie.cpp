@@ -11,12 +11,6 @@ Movie::Movie(const std::string& title, int price_code)
     : title(title), price_code(price_code)
 { }
 
-// movie title
-const std::string& Movie::getTitle() const {
-
-    return title;
-}
-
 // movie price code
 int Movie::getPriceCode() const {
 
@@ -27,4 +21,10 @@ int Movie::getPriceCode() const {
 void Movie::setPriceCode(int new_price_code) {
 
     price_code = new_price_code;
+}
+
+// movie title
+const std::string& Movie::getTitle() const {
+
+    return title;
 }
