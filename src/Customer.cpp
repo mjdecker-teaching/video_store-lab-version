@@ -57,21 +57,21 @@ std::string Customer::statement() const {
 
     	}
 
-    // add frequent renter points
-    ++frequentRenterPoints;
-    // add bonus for a two day new release rental
-    if ((each.getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
-        each.getDaysRented() > 1) frequentRenterPoints ++;
+	    // add frequent renter points
+	    ++frequentRenterPoints;
+	    // add bonus for a two day new release rental
+	    if ((each.getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
+	        each.getDaysRented() > 1) frequentRenterPoints ++;
 
-    //show figures for this rental
-    result += "\t" + each.getMovie().getTitle()+ "\t";
-	std::ostringstream amount_stream;
-	amount_stream << thisAmount;
-	result +=  amount_stream.str();
-    result += "\n";
-    totalAmount += thisAmount;
+	    //show figures for this rental
+	    result += "\t" + each.getMovie().getTitle()+ "\t";
+		std::ostringstream amount_stream;
+		amount_stream << thisAmount;
+		result +=  amount_stream.str();
+	    result += "\n";
+	    totalAmount += thisAmount;
 
-    }
+	}
 
     //add footer lines
     // total amount owed
