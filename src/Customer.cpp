@@ -55,7 +55,7 @@ std::string Customer::statement() const {
                     thisAmount += (each.getDaysRented() - 3) * 1.5;
                 break;
 
-    }
+    	}
 
     // add frequent renter points
     ++frequentRenterPoints;
@@ -64,8 +64,11 @@ std::string Customer::statement() const {
         each.getDaysRented() > 1) frequentRenterPoints ++;
 
     //show figures for this rental
-    result += "\t" + each.getMovie().getTitle()+ "\t" +
-        std::to_string(thisAmount) + "\n";
+    result += "\t" + each.getMovie().getTitle()+ "\t";
+	std::ostringstream amount_stream;
+	amount_stream << thisAmount;
+	result +=  amount_stream.str();
+    result += "\n";
     totalAmount += thisAmount;
 
     }
@@ -73,16 +76,16 @@ std::string Customer::statement() const {
     //add footer lines
     // total amount owed
     result += "Amount owed is: ";
-    std::ostringstream out_str_stream;
-    out_str_stream << totalAmount;
-    result += out_str_stream.str();
+    std::ostringstream owed_stream;
+    owed_stream << totalAmount;
+    result += owed_stream.str();
     result += "\n";
 
     // frequent renter points earned
     result += "You earned: ";
-    std::ostringstream out_str_stream2;
-    out_str_stream2 << frequentRenterPoints;
-    result += out_str_stream2.str();
+    std::ostringstream frequent_stream;
+    frequent_stream << frequentRenterPoints;
+    result += frequent_stream.str();
     result += " frequent renter points\n";
 
     return result;
