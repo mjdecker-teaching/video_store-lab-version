@@ -34,9 +34,8 @@ std::string Customer::statement() const {
 
     double totalAmount = 0;
     int frequentRenterPoints = 0;
-    std::vector<Rental>::const_iterator it = rentals.begin();
     std::string result = "Rental Record for " + getName() + "\n";
-    while (it != rentals.end()) {
+    for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
         double thisAmount = 0;
         Rental each = (Rental) *it;
 
@@ -55,6 +54,7 @@ std::string Customer::statement() const {
                 if (each.getDaysRented() > 3)
                     thisAmount += (each.getDaysRented() - 3) * 1.5;
                 break;
+
     }
 
     // add frequent renter points
