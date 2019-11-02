@@ -28,6 +28,9 @@ public:
     // customer name
     std::string getName() const;
 
+    // get total rental charge
+    double getTotalCharge() const;
+
     // customer rental statement
     std::string statement() const;
 

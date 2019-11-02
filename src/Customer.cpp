@@ -29,10 +29,19 @@ std::string Customer::getName() const {
     return name;
 }
 
+double Customer::getTotalCharge() const {
+
+    double totalAmount = 0;
+    for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
+        totalAmount += it->getCharge();
+    }
+
+    return totalAmount;
+}
+
 // customer rental statement
 std::string Customer::statement() const {
 
-    double totalAmount = 0;
     int frequentRenterPoints = 0;
     std::string result = "Rental Record for " + getName() + "\n";
     for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
@@ -51,7 +60,6 @@ std::string Customer::statement() const {
         amount_stream << each.getCharge();
         result +=  amount_stream.str();
         result += "\n";
-        totalAmount += each.getCharge();
 
     }
 
@@ -59,7 +67,7 @@ std::string Customer::statement() const {
     // total amount owed
     result += "Amount owed is: ";
     std::ostringstream owed_stream;
-    owed_stream << totalAmount;
+    owed_stream << getTotalCharge();
     result += owed_stream.str();
     result += "\n";
 
