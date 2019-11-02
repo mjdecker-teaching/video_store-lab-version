@@ -38,7 +38,6 @@ std::string Customer::statement() const {
     for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
 
         Rental each = (Rental) *it;
-	double thisAmount = each.getCharge();
 
         // add frequent renter points
         ++frequentRenterPoints;
@@ -49,10 +48,10 @@ std::string Customer::statement() const {
         //show figures for this rental
         result += "\t" + each.getMovie().getTitle()+ "\t";
         std::ostringstream amount_stream;
-        amount_stream << thisAmount;
+        amount_stream << each.getCharge();
         result +=  amount_stream.str();
         result += "\n";
-        totalAmount += thisAmount;
+        totalAmount += each.getCharge();
 
     }
 
