@@ -29,6 +29,32 @@ std::string Customer::getName() const {
     return name;
 }
 
+// calculate the amount for a rental
+double Customer::amountFor(const Rental & each) const {
+
+    double thisAmount = 0;
+
+    //determine amounts for each line
+    switch (each.getMovie().getPriceCode()) {
+    case Movie::REGULAR:
+	thisAmount += 2;
+	if (each.getDaysRented() > 2)
+	    thisAmount += (each.getDaysRented() - 2) * 1.5;
+	break;
+    case Movie::NEW_RELEASE:
+	thisAmount += each.getDaysRented() * 3;
+	break;
+    case Movie::CHILDRENS:
+	thisAmount += 1.5;
+	if (each.getDaysRented() > 3)
+	    thisAmount += (each.getDaysRented() - 3) * 1.5;
+	break;
+
+    }
+
+    return thisAmount;
+}
+
 // customer rental statement
 std::string Customer::statement() const {
 
@@ -36,26 +62,9 @@ std::string Customer::statement() const {
     int frequentRenterPoints = 0;
     std::string result = "Rental Record for " + getName() + "\n";
     for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
-        double thisAmount = 0;
+
         Rental each = (Rental) *it;
-
-        //determine amounts for each line
-        switch (each.getMovie().getPriceCode()) {
-            case Movie::REGULAR:
-                thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie::NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
-                break;
-            case Movie::CHILDRENS:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
-                break;
-
-        }
+	double thisAmount = amountFor(each);
 
         // add frequent renter points
         ++frequentRenterPoints;

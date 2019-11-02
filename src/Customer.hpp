@@ -28,6 +28,9 @@ public:
     // customer name
     std::string getName() const;
 
+    // calculate amount for a rental
+    double amountFor(const Rental & each) const;
+
     // customer rental statement
     std::string statement() const;
 
