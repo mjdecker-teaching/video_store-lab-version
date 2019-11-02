@@ -25,6 +25,8 @@ public:
     // movie rented
     const Movie& getMovie() const;
 
+    // calculate amount for a rental
+    double getCharge() const;
 
 };
 
