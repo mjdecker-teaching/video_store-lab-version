@@ -60,7 +60,7 @@ int main() {
         Customer customer("Fred");
 
         // Create movies
-        Movie lotr("Lord of the Rings", Movie::REGULAR);
+        Movie lotr("Lord of the Rings", Movie::NEW_RELEASE);
         Movie hp("Harry Potter", Movie::CHILDRENS);
 
         // Create rentals of these movies
