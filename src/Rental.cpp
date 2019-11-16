@@ -48,3 +48,15 @@ double Rental::getCharge() const {
 
     return thisAmount;
 }
+
+int Rental::getFrequentRenterPoints() const {
+
+    // add frequent renter points
+    int frequentRenterPoints = 1;
+    // add bonus for a two day new release rental
+    if ((getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
+	getDaysRented() > 1) frequentRenterPoints ++;
+
+    return frequentRenterPoints;
+
+}

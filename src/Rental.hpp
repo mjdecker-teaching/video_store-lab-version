@@ -28,6 +28,9 @@ public:
     // calculate amount for a rental
     double getCharge() const;
 
+    // get frequent renter ponts for a rental
+    int getFrequentRenterPoints() const;
+
 };
 
 #endif
