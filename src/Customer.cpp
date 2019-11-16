@@ -39,6 +39,18 @@ double Customer::getTotalCharge() const {
     return totalAmount;
 }
 
+int Customer::getFrequentRenterPoints(const Rental & each) const {
+
+    // add frequent renter points
+    int frequentRenterPoints = 1;
+    // add bonus for a two day new release rental
+    if ((each.getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
+	each.getDaysRented() > 1) frequentRenterPoints ++;
+
+    return frequentRenterPoints;
+
+}
+
 // customer rental statement
 std::string Customer::statement() const {
 
@@ -47,12 +59,7 @@ std::string Customer::statement() const {
     for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
 
         Rental each = (Rental) *it;
-
-        // add frequent renter points
-        ++frequentRenterPoints;
-        // add bonus for a two day new release rental
-        if ((each.getMovie().getPriceCode() == Movie::NEW_RELEASE) &&
-            each.getDaysRented() > 1) frequentRenterPoints ++;
+	frequentRenterPoints += getFrequentRenterPoints(each);
 
         //show figures for this rental
         result += "\t" + each.getMovie().getTitle()+ "\t";

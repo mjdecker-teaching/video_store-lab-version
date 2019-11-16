@@ -31,6 +31,9 @@ public:
     // get total rental charge
     double getTotalCharge() const;
 
+    // get frequent renter ponts for a rental
+    int getFrequentRenterPoints(const Rental & each) const;
+
     // customer rental statement
     std::string statement() const;
 
