@@ -39,15 +39,23 @@ double Customer::getTotalCharge() const {
     return totalAmount;
 }
 
+int Customer::getTotalFrequentRenterPoints() const {
+
+    int frequentRenterPoints = 0;
+    for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
+	frequentRenterPoints += it->getFrequentRenterPoints();
+    }
+    
+    return frequentRenterPoints;
+}
+
 // customer rental statement
 std::string Customer::statement() const {
 
-    int frequentRenterPoints = 0;
     std::string result = "Rental Record for " + getName() + "\n";
     for(std::vector<Rental>::const_iterator it = rentals.begin(); it != rentals.end(); ++it) {
 
         Rental each = (Rental) *it;
-	frequentRenterPoints += each.getFrequentRenterPoints();
 
         //show figures for this rental
         result += "\t" + each.getMovie().getTitle()+ "\t";
@@ -69,7 +77,7 @@ std::string Customer::statement() const {
     // frequent renter points earned
     result += "You earned: ";
     std::ostringstream frequent_stream;
-    frequent_stream << frequentRenterPoints;
+    frequent_stream << getTotalFrequentRenterPoints();
     result += frequent_stream.str();
     result += " frequent renter points\n";
 
