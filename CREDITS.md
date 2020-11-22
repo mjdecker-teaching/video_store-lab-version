@@ -9,7 +9,7 @@
 	http://www.cs.uakron.edu/~collard
 	https://github.com/mlcollard
 
-* Adapted fork by Michael John Decker
+* Adapted further by Michael J. Decker, Ph.D.
 
 	http://www.cs.kent.edu/~mdecker
 	https://github.com/mjdecker
